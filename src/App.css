@@ -11,19 +11,26 @@
   --pixels-border: #222222;
 }
 
-body {
+* {
+  box-sizing: border-box; /* PREVENTS OVERFLOW FROM PADDING */
+}
+
+html, body {
   margin: 0;
   padding: 0;
+  width: 100%;
+  max-width: 100vw;
   background-color: var(--pixels-bg);
   color: var(--pixels-text);
   font-family: 'Inter', ui-monospace, Consolas, monospace;
-  overflow-x: hidden;
+  overflow-x: hidden; /* ELIMINATES THE WEIRD WHITE SPACE/HORIZONTAL SCROLL */
 }
 
 .lat-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  width: 100%;
 }
 
 /* THE ARCHITECTURAL HEADER */
@@ -32,11 +39,12 @@ body {
   position: relative;
   z-index: 20;
   border-bottom: 1px solid var(--pixels-border);
+  text-align: center; /* CENTER HEADER TEXT ON ALL DEVICES */
 }
 
 .header-top {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* CENTER TITLE */
   align-items: flex-end;
   margin-bottom: 24px;
 }
@@ -56,6 +64,7 @@ body {
     font-size: 13px;
     color: var(--pixels-text-muted);
     max-width: 600px;
+    margin: 0 auto; /* CENTER SUBTITLE */
     line-height: 1.6;
     font-weight: 500;
     letter-spacing: 2px;
@@ -67,7 +76,7 @@ body {
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 70vh; /* Commands the main viewport */
+    height: 70vh; 
     border-bottom: 1px solid var(--pixels-border);
 }
 
@@ -79,7 +88,8 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center; /* CENTER CONTENT VERTICALLY */
+    align-items: center; /* CENTER CONTENT HORIZONTALLY */
 }
 
 .arch-block:last-child {
@@ -87,18 +97,23 @@ body {
 }
 
 .arch-block:hover {
-    flex: 3.5; /* The block rapidly expands to reveal the manifesto */
+    flex: 3.5;
 }
 
 .block-content {
     padding: 40px;
     width: 100%;
     box-sizing: border-box;
-    min-width: 300px; /* Prevents text from crushing before expansion */
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* CENTER BLOCK INTERNALS */
+    text-align: center; /* CENTER TEXT */
 }
 
 .block-header {
     display: flex;
+    flex-direction: column; /* VERTICAL STACK FOR CENTERING */
     align-items: center;
     gap: 16px;
     margin-bottom: 24px;
@@ -112,10 +127,6 @@ body {
     transition: color 0.3s ease;
 }
 
-.icon-wrap {
-    transition: color 0.3s ease;
-}
-
 .block-title {
     font-size: 32px;
     font-weight: 900;
@@ -123,18 +134,13 @@ body {
     margin: 0 0 20px 0;
     letter-spacing: -2px;
     text-transform: uppercase;
-    transition: color 0.3s ease;
-}
-
-.block-desc-wrap {
-    overflow: hidden;
 }
 
 .block-desc {
     font-size: 16px;
     line-height: 1.5;
     font-weight: 500;
-    margin: 0;
+    margin: 0 auto;
     max-width: 420px;
 }
 
@@ -149,12 +155,11 @@ body {
     letter-spacing: 1px;
 }
 
-.footer-manifesto {
-    color: var(--pixels-text);
-}
-
 /* MOBILE FALLBACK */
 @media (max-width: 1024px) {
+    .lat-header { padding: 40px 20px; }
+    .lat-header h1 { font-size: 40px; }
+    
     .architectural-grid {
         flex-direction: column;
         height: auto;
@@ -162,12 +167,13 @@ body {
     .arch-block {
         border-right: none;
         border-bottom: 1px solid var(--pixels-border);
-        min-height: 120px;
+        min-height: 180px; /* INCREASED FOR BETTER TAP TARGETS */
     }
     .arch-block:hover {
         flex: unset;
     }
     .block-content {
         min-width: unset;
+        padding: 40px 20px;
     }
 }
