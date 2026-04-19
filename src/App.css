@@ -5,9 +5,10 @@
   --barragan-blue: #304ffe;
   --barragan-green: #2e7d32;
   --barragan-terracotta: #bf360c;
-  --pixels-bg: #000;
-  --pixels-text: #fff;
-  --pixels-border: #111;
+  --pixels-bg: #030303;
+  --pixels-text: #ffffff;
+  --pixels-text-muted: #666666;
+  --pixels-border: #222222;
 }
 
 body {
@@ -15,184 +16,158 @@ body {
   padding: 0;
   background-color: var(--pixels-bg);
   color: var(--pixels-text);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', ui-monospace, Consolas, monospace;
   overflow-x: hidden;
 }
 
 .lat-container {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 /* THE ARCHITECTURAL HEADER */
 .lat-header {
-  padding: 100px 40px 60px;
+  padding: 60px 40px 40px;
   position: relative;
   z-index: 20;
+  border-bottom: 1px solid var(--pixels-border);
 }
 
 .header-top {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
 }
 
 .lat-header h1 {
-  font-size: 80px;
+  font-size: 64px;
   font-weight: 900;
-  letter-spacing: -5px;
+  letter-spacing: -4px;
   margin: 0;
-  line-height: 0.8;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 .lat-header h1 span { color: var(--barragan-pink); }
 
-.resonance-meter { width: 300px; }
-.resonance-meter .label { font-size: 11px; font-weight: 800; color: #333; margin-bottom: 8px; }
-.resonance-meter .bar { height: 6px; background: #0a0a0a; border: 1px solid #1a1a1a; overflow: hidden; }
-.resonance-meter .fill { height: 100%; background: var(--barragan-pink); transition: width 1s ease; }
-.resonance-meter .value { font-size: 10px; margin-top: 8px; color: var(--barragan-pink); font-weight: 800; }
-
 .subtitle {
-    font-size: 18px;
-    color: #555;
-    max-width: 700px;
-    line-height: 1.4;
+    font-size: 13px;
+    color: var(--pixels-text-muted);
+    max-width: 600px;
+    line-height: 1.6;
     font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
-/* THE MURAL: OVERLAPPING BARRAGÁN WALLS */
-.mural-block {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    height: 400px;
-    position: relative;
-    margin-top: -20px;
-    border-top: 1px solid var(--pixels-border);
+/* FLEX ACCORDION GRID */
+.architectural-grid {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 70vh; /* Commands the main viewport */
     border-bottom: 1px solid var(--pixels-border);
 }
 
-.mural-block > div {
-    height: 100%;
-    transition: transform 1.5s cubic-bezier(0.2, 1, 0.3, 1), opacity 1s ease;
-    opacity: 0.8;
-}
-
-.block-1 { background: var(--barragan-pink); }
-.block-2 { background: var(--barragan-yellow); }
-.block-3 { background: var(--barragan-orange); }
-.block-4 { background: var(--barragan-blue); }
-.block-5 { background: var(--barragan-green); }
-.block-6 { background: var(--barragan-terracotta); }
-
-/* THE LIBRARY: HIGH DENSITY ARCHIVAL */
-.library-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    background: var(--pixels-border);
-    gap: 1px;
-}
-
-.library-item {
-    background: var(--pixels-bg);
-    position: relative;
+.arch-block {
+    flex: 1;
+    border-right: 1px solid var(--pixels-border);
+    transition: flex 0.6s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
     overflow: hidden;
-    cursor: crosshair;
-}
-
-.item-content {
-    padding: 80px 50px;
-    min-height: 450px;
+    position: relative;
     display: flex;
     flex-direction: column;
-    position: relative;
-    z-index: 5;
+    justify-content: flex-end;
 }
 
-.library-item.liberated {
-    background: #020202;
+.arch-block:last-child {
+    border-right: none;
 }
 
-.item-meta {
+.arch-block:hover {
+    flex: 3.5; /* The block rapidly expands to reveal the manifesto */
+}
+
+.block-content {
+    padding: 40px;
+    width: 100%;
+    box-sizing: border-box;
+    min-width: 300px; /* Prevents text from crushing before expansion */
+}
+
+.block-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.block-meta {
     font-size: 11px;
-    font-weight: 900;
-    letter-spacing: 3px;
-    color: #222;
-    margin-bottom: 40px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    font-family: ui-monospace, Consolas, monospace;
+    transition: color 0.3s ease;
 }
 
-.liberated .item-meta { color: var(--barragan-yellow); }
+.icon-wrap {
+    transition: color 0.3s ease;
+}
 
-.item-title {
+.block-title {
     font-size: 32px;
     font-weight: 900;
-    line-height: 1.0;
-    margin-bottom: 30px;
-    letter-spacing: -1px;
+    line-height: 1;
+    margin: 0 0 20px 0;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
 }
 
-.item-desc {
-    font-size: 15px;
-    color: #444;
-    line-height: 1.8;
-    margin-bottom: auto;
+.block-desc-wrap {
+    overflow: hidden;
 }
 
-.liberated .item-desc { color: #888; }
-
-.liberation-btn {
-    background: transparent;
-    border: 1px solid #222;
-    color: #222;
-    padding: 15px 30px;
-    font-size: 12px;
-    font-weight: 900;
-    cursor: pointer;
-    transition: all 0.4s ease;
-}
-
-.liberation-btn:hover { border-color: #fff; color: #fff; }
-.liberation-btn.active { border-color: var(--barragan-yellow); color: var(--barragan-yellow); }
-
-.liberation-flash {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: var(--barragan-pink);
-    opacity: 0.05;
-    pointer-events: none;
-}
-
-.game-theory-note {
-    padding: 120px 40px;
-    background: #030303;
-}
-
-.game-theory-note h3 {
-    font-size: 12px;
-    color: var(--barragan-pink);
-    letter-spacing: 4px;
-    margin-bottom: 30px;
-}
-
-.game-theory-note p {
-    font-size: 20px;
-    color: #666;
-    max-width: 900px;
-    line-height: 1.6;
-    font-weight: 400;
+.block-desc {
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 500;
+    margin: 0;
+    max-width: 420px;
 }
 
 .lat-footer {
-    padding: 80px 40px;
-    border-top: 1px solid var(--pixels-border);
-    color: #222;
+    padding: 30px 40px;
+    color: var(--pixels-text-muted);
     font-size: 11px;
     font-weight: 800;
+    display: flex;
+    justify-content: space-between;
+    font-family: ui-monospace, Consolas, monospace;
+    letter-spacing: 1px;
 }
 
-@media (max-width: 768px) {
-    .lat-header h1 { font-size: 48px; letter-spacing: -2px; }
-    .mural-block { grid-template-columns: repeat(3, 1fr); height: 200px; }
-    .item-content { padding: 40px 30px; min-height: 350px; }
+.footer-manifesto {
+    color: var(--pixels-text);
+}
+
+/* MOBILE FALLBACK */
+@media (max-width: 1024px) {
+    .architectural-grid {
+        flex-direction: column;
+        height: auto;
+    }
+    .arch-block {
+        border-right: none;
+        border-bottom: 1px solid var(--pixels-border);
+        min-height: 120px;
+    }
+    .arch-block:hover {
+        flex: unset;
+    }
+    .block-content {
+        min-width: unset;
+    }
 }
