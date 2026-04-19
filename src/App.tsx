@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { BookOpen, Share2, Globe, Shield, Terminal, Zap } from 'lucide-react'
+import { BookOpen, Share2, Globe, Shield, Terminal, Zap, Cpu, Map } from 'lucide-react'
 import './App.css'
 
 const LIBRARY_ASSETS = [
@@ -8,43 +8,57 @@ const LIBRARY_ASSETS = [
     id: 'lat_nash',
     category: 'GAME_THEORY',
     title: 'THE LATIN EQUILIBRIUM',
-    desc: 'Analyzing non-zero-sum cooperation in Latin American history. Shifting from extractive competition to synergistic liberation.',
-    icon: <Globe size={20} />
+    desc: 'Analyzing collective bargaining and non-zero-sum cooperation in Latin American history. Moving from competition to synergy.',
+    icon: <Globe size={24} />
   },
   {
-    id: 'mexico_hack',
-    category: 'CYBER_SECURITY',
-    title: 'CENTRALIZED_FAILURE: THE 2022 LEAKS',
-    desc: 'Analyzing the vulnerability of centralized state systems. When the core is hacked, the many are exposed. The argument for the Enclave.',
-    icon: <Terminal size={20} />
-  },
-  {
-    id: 'sovereign_roots',
+    id: 'systemic_fragility',
     category: 'SIGNAL_SECURITY',
-    title: 'ANCESTRAL_SIGNAL_RESILIENCE',
-    desc: 'Reclaiming the logic of non-linear communication. Encoding truth within the knots of community resilience.',
-    icon: <Shield size={20} />
+    title: 'THE_VULNERABILITY_OF_THE_CORE',
+    desc: 'Mexico proved that when institutions centralize the many, they expose the many. Decentralization is not just tech; it is survival.',
+    icon: <Terminal size={24} />
+  },
+  {
+    id: 'arch_barragan',
+    category: 'ARCHITECTURE',
+    title: 'BARRAGÁN: EMOTIONAL INFRASTRUCTURE',
+    desc: 'How the use of vibrant walls and deep shadows creates a "Safe Space" for the soul. The blueprint for the Integrated Enclave.',
+    icon: <BookOpen size={24} />
   },
   {
     id: 'lib_signal',
     category: 'LIBERATION',
     title: 'THE SIGNAL COMMONS',
-    desc: 'Reclaiming intellectual property as a collective asset. Defeating the feudal licensing model through sovereign code.',
-    icon: <Share2 size={20} />
+    desc: 'Reclaiming open-source intellectual property as a sovereign community asset. Defeating the feudal licensing model.',
+    icon: <Share2 size={24} />
   },
   {
-    id: 'architect_manifesto',
-    category: 'MANIFESTO',
-    title: 'THE LIBERATION OF THE MANY',
-    desc: 'From the lens to the kernel. Why the Architect must build for the sovereign individual, not the feudal institution.',
-    icon: <Zap size={20} />
+    id: 'sovereign_roots',
+    category: 'HERITAGE',
+    title: 'ANCESTRAL_NETWORK_SECURITY',
+    desc: 'Exploring non-linear narrative and information security in ancestral communication systems. Encoding truth within community.',
+    icon: <Shield size={24} />
   },
   {
-    id: 'arch_barragan',
-    category: 'ARCHITECTURE',
-    title: 'EMOTIONAL INFRASTRUCTURE',
-    desc: 'Utilizing Barragán minimalism to create safe digital spaces. Reclaiming the quiet as a human right.',
-    icon: <BookOpen size={20} />
+    id: 'kernal_liberation',
+    category: 'SYSTEMS',
+    title: 'KERNEL_FOR_THE_MANY',
+    desc: 'Bridging the gap between cultural roots and bare-metal future. Building an OS for the sovereign individual.',
+    icon: <Cpu size={24} />
+  },
+  {
+    id: 'mexico_future',
+    category: 'PRO_MEXICO',
+    title: 'THE_RESILIENT_NATION',
+    desc: 'Beyond the hacks lies the strength of a people who have always operated in decentralized, resilient nodes.',
+    icon: <Map size={24} />
+  },
+  {
+    id: 'collective_bargaining',
+    category: 'ECONOMICS',
+    title: 'NON-ZERO-SUM_SYNERGY',
+    desc: 'Reframing trade as a collaborative handshake. The economic blueprint for the Integrated Enclave.',
+    icon: <Zap size={24} />
   }
 ]
 
@@ -66,33 +80,28 @@ function App() {
           <motion.h1 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
           >
             PARADA<span>.LAT</span>
           </motion.h1>
           <div className="resonance-meter">
              <div className="label">ENCLAVE_RESONANCE</div>
              <div className="bar"><div className="fill" style={{ width: `${resonance}%` }}></div></div>
-             <div className="value">{resonance.toFixed(0)}%_SYNC</div>
+             <div className="value">{resonance.toFixed(0)}%_SYNC_ACTIVE</div>
           </div>
         </div>
         <p className="subtitle">
-          RECLAIMING THE LATIN INTELLECTUAL COMMONS // THE BLUEPRINT FOR LIBERATED SIGNALS.
+          RECLAIMING THE LATIN INTELLECTUAL COMMONS. BARRAGÁN MINIMALISM MEETING HIGH-DENSITY SOVEREIGN ARCHIVAL.
         </p>
       </header>
 
       <section className="mural-block">
-        <motion.div 
-          className="block-1" 
-          animate={{ height: resonance > 20 ? '100%' : '15%' }}
-        ></motion.div>
-        <motion.div 
-          className="block-2" 
-          animate={{ height: resonance > 40 ? '100%' : '30%' }}
-        ></motion.div>
-        <motion.div 
-          className="block-3" 
-          animate={{ height: resonance > 60 ? '100%' : '45%' }}
-        ></motion.div>
+        <motion.div className="block-1" animate={{ height: resonance > 10 ? '100%' : '15%', opacity: resonance > 10 ? 1 : 0.4 }}></motion.div>
+        <motion.div className="block-2" animate={{ height: resonance > 30 ? '100%' : '30%', opacity: resonance > 30 ? 1 : 0.4 }}></motion.div>
+        <motion.div className="block-3" animate={{ height: resonance > 50 ? '100%' : '45%', opacity: resonance > 50 ? 1 : 0.4 }}></motion.div>
+        <motion.div className="block-4" animate={{ height: resonance > 70 ? '100%' : '25%', opacity: resonance > 70 ? 1 : 0.4 }}></motion.div>
+        <motion.div className="block-5" animate={{ height: resonance > 85 ? '100%' : '50%', opacity: resonance > 85 ? 1 : 0.4 }}></motion.div>
+        <motion.div className="block-6" animate={{ height: resonance > 95 ? '100%' : '20%', opacity: resonance > 95 ? 1 : 0.4 }}></motion.div>
       </section>
 
       <main className="library-grid">
@@ -102,15 +111,17 @@ function App() {
             <motion.div 
               key={asset.id}
               className={`library-item ${isLiberated ? 'liberated' : ''}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: index * 0.1 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.05 }}
             >
               <div className="item-content">
                 <div className="item-meta">
-                  {isLiberated ? 'COMMONS_ACTIVE ✓' : asset.category}
+                  {isLiberated ? 'SIGNAL_LIBERATED ✓' : asset.category}
                 </div>
-                <div className="icon-wrap">{asset.icon}</div>
+                <div className="icon-wrap" style={{ color: isLiberated ? 'var(--barragan-yellow)' : '#333' }}>
+                    {asset.icon}
+                </div>
                 <h2 className="item-title">{asset.title}</h2>
                 <p className="item-desc">{asset.desc}</p>
                 
@@ -119,7 +130,7 @@ function App() {
                   onClick={() => liberate(asset.id)}
                   disabled={isLiberated}
                 >
-                  {isLiberated ? 'SIGNAL_ESTABLISHED' : 'LIBERATE_SIGNAL'}
+                  {isLiberated ? 'COMMONS_ESTABLISHED' : 'LIBERATE_SIGNAL'}
                 </button>
               </div>
               
@@ -127,9 +138,9 @@ function App() {
                 {isLiberated && (
                   <motion.div 
                     className="liberation-flash"
-                    initial={{ height: 0 }}
-                    animate={{ height: '100%' }}
-                    exit={{ height: 0 }}
+                    initial={{ scaleY: 0 }}
+                    animate={{ scaleY: 1 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
                   />
                 )}
               </AnimatePresence>
@@ -139,13 +150,13 @@ function App() {
       </main>
 
       <div className="game-theory-note">
-         <h3>THE ENCLAVE VS THE STATE</h3>
-         <p>The 2022 hacking of Mexican centralized institutions proved that massive, monolithic entities are fragile. The security of the many depends on the sovereignty of the individual. Our Non-Zero-Sum Protocol establishes small, interconnected, highly-resilient enclaves. By liberating these signals, you are encoding a new baseline of safety.</p>
+         <h3>THE ARCHITECT'S PROMISE</h3>
+         <p>The fragility of centralized state institutions is an opportunity for individual sovereignty. Mexico has always been a nation of resilient nodes. By liberating these signals, we are not just reclaiming code or architecture; we are reclaiming the right to exist in the quiet, outside the reach of extractive feudalism.</p>
       </div>
 
       <footer className="lat-footer">
         <p>© 2026 PIXELS AGENCY // ARCHITECT: PARADA</p>
-        <p style={{marginTop: '10px'}}>STRENGTH IN THE COMMONS. SAFETY IN THE KERNEL.</p>
+        <p style={{marginTop: '15px', color: '#333'}}>STRENGTH IN THE COMMONS. SAFETY IN THE KERNEL. VIVA LA SOBERANÍA.</p>
       </footer>
     </div>
   )
