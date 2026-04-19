@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Globe, Terminal, BookOpen, Share2, Shield, Cpu } from 'lucide-react'
+import { Globe, BookOpen, Share2, Shield, Cpu } from 'lucide-react'
 import './App.css'
 
 const MANIFESTO_BLOCKS = [
