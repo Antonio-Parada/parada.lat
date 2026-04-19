@@ -1,0 +1,123 @@
+:root {
+  --barragan-pink: #f06292;
+  --barragan-yellow: #ffeb3b;
+  --barragan-orange: #ff9800;
+  --barragan-blue: #0288d1;
+  --pixels-bg: #000;
+  --pixels-text: #fff;
+  --pixels-border: #1a1a1a;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--pixels-bg);
+  color: var(--pixels-text);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+.lat-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* THE MURAL HEADER */
+.lat-header {
+  padding: 80px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.lat-header h1 {
+  font-size: 64px;
+  font-weight: 900;
+  letter-spacing: -3px;
+  margin: 0;
+  line-height: 0.9;
+}
+
+.lat-header h1 span {
+  display: block;
+  color: var(--barragan-pink);
+}
+
+.mural-block {
+  width: 100%;
+  height: 200px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr;
+  border-top: 1px solid var(--pixels-border);
+  border-bottom: 1px solid var(--pixels-border);
+}
+
+.block-1 { background-color: var(--barragan-pink); }
+.block-2 { background-color: var(--barragan-yellow); }
+.block-3 { background-color: var(--barragan-orange); }
+
+/* THE LIBRARY GRID */
+.library-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1px;
+  background-color: var(--pixels-border);
+}
+
+.library-item {
+  background-color: var(--pixels-bg);
+  padding: 40px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: background-color 0.3s ease;
+}
+
+.library-item:hover {
+  background-color: #080808;
+}
+
+.item-meta {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--barragan-pink);
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+.item-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+
+.item-desc {
+  font-size: 12px;
+  color: #888;
+  line-height: 1.6;
+}
+
+.liberation-btn {
+  margin-top: 30px;
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 10px;
+  font-weight: 800;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.liberation-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .lat-header h1 { font-size: 40px; }
+  .mural-block { height: 100px; }
+}
